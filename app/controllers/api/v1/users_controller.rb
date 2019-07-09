@@ -27,6 +27,11 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
+    def edit
+        user = User.find(current_user.id)
+        user.update(img_url: params[:img_url])
+    end
+
     private
 
     def user_params 
