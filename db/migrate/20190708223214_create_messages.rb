@@ -3,6 +3,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
     create_table :messages do |t|
       t.text :content
       t.integer :channel_id
+      t.integer :user_id
 
       t.timestamps
     end
