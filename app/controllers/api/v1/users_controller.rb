@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
         render json: users
     end
 
-      def profile
+    def profile
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
 
@@ -17,11 +17,10 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
-        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-        BCrypt::Engine.cost
+        @user = User.new(user_params)
+        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
         @user.password_digest = BCrypt::Password.create(params[:password], cost: cost)
-        if @user.valid?
+        if @user.save
             render json: { user: UserSerializer.new(@user) }, status: :created
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
