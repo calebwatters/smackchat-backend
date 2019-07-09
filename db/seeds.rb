@@ -20,11 +20,14 @@ end
     
     10.times do 
         channel = Channel.all.sample
-        content = Faker::Hipster.sentences(1)
-        Message.create(user_id: user.id, channel_id: channel.id, content: content )
+        content = Faker::Hipster.sentence
+        message = Message.create(user_id: user.id, channel_id: channel.id, content: content )
+        Reply.create(user_id: User.all.sample.id, message_id: message.id, content: Faker::Hipster.sentence)
     end
 
 end
+
+
 
 
 
