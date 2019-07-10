@@ -6,9 +6,16 @@ class Api::V1::MessagesController < ApplicationController
     end
 
     def create
-        message = Message.create(message_params)
-        render json: { message: MessageSerializer.new(message) }, status: :accepted
+    message = Message.new(message_params)
+    channel = Channel.find(message_params[:channel_id])
+    if message.save
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(
+        MessageSerializer.new(message)
+      ).serializable_hash
+      MessagesChannel.broadcast_to channel, serialized_data
+      render json: { message: MessageSerializer.new(message) }, status: :accepted
     end
+  end
 
      def show 
         @message = Message.find(params[:id]) 
