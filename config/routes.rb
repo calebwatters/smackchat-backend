@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  
   namespace :api do
     namespace :v1 do
+      mount ActionCable.server => '/cable'
+      resources :user_channels
       resources :messages
       resources :replies
       resources :channels
