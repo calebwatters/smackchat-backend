@@ -28,6 +28,13 @@ end
 end
 
 
+    name = "Caleb Watters"
+    username = 'calebwatters'
+    email = 'caleb@watters.io'
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    password_digest = BCrypt::Password.create('123456', cost: cost)
+    user = User.create(username: username, name: name, email: email, password_digest: password_digest) 
+
 
 
 
