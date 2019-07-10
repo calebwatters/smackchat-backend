@@ -5,8 +5,8 @@ Message.destroy_all
 
 
 10.times do 
-    name = Faker::Internet.slug
-    Channel.create(name: name)
+    name = Faker::App.name
+    Channel.create(name: "#" + name)
 end
 
 20.times do 
@@ -20,11 +20,21 @@ end
     
     10.times do 
         channel = Channel.all.sample
-        content = Faker::Hipster.sentences(1)
-        Message.create(user_id: user.id, channel_id: channel.id, content: content )
+        content = Faker::Hipster.sentence
+        message = Message.create(user_id: user.id, channel_id: channel.id, content: content )
+        Reply.create(user_id: User.all.sample.id, message_id: message.id, content: Faker::Hipster.sentence)
     end
 
 end
+
+
+    name = "Caleb Watters"
+    username = 'calebwatters'
+    email = 'caleb@watters.io'
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    password_digest = BCrypt::Password.create('123456', cost: cost)
+    user = User.create(username: username, name: name, email: email, password_digest: password_digest) 
+
 
 
 
