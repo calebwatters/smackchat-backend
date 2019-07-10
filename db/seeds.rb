@@ -44,8 +44,7 @@ end
     cost2 = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     password_digest2 = BCrypt::Password.create('123456', cost: cost2)
     user2 = User.create(username: username2, name: name2, email: email2, password_digest: password_digest2) 
-    channel2 = Channel.create(name: '#TestChannel')
-    UserChannel.create(user_id: user2.id, channel_id: channel2.id)
+    UserChannel.create(user_id: user2.id, channel_id: channel.id)
 
 
 
