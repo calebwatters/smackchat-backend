@@ -5,8 +5,8 @@ Message.destroy_all
 
 
 10.times do 
-    name = Faker::Internet.slug
-    Channel.create(name: name)
+    name = Faker::App.name
+    Channel.create(name: "#" + name)
 end
 
 20.times do 
@@ -20,7 +20,7 @@ end
     
     10.times do 
         channel = Channel.all.sample
-        content = Faker::Hipster.sentences(1)
+        content = Faker::Hipster.sentences(2)
         Message.create(user_id: user.id, channel_id: channel.id, content: content )
     end
 

@@ -1,5 +1,5 @@
 class Api::V1::ChannelsController < ApplicationController
-    
+     skip_before_action :authorized, only: [:index]
     def index 
         channels = Channel.all 
         render :json => channels, status: :accepted
