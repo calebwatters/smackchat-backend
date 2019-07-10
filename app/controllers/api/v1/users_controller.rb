@@ -32,8 +32,11 @@ class Api::V1::UsersController < ApplicationController
         @user = User.find(current_user.id)
         @user.update(user_params)
 
+
         render json: { user: UserSerializer.new(@user) }, status: :accepted
     end
+
+
 
     private
 
