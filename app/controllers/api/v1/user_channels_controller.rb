@@ -7,8 +7,8 @@ class Api::V1::UserChannelsController < ApplicationController
     end
 
     def create
-            user_channel = Channel.new(user_channel_params)
-    if channel.save
+        user_channel = UserChannel.new(user_channel_params)
+    if user_channel.save
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
         UserChannelSerializer.new(user_channel)
       ).serializable_hash
