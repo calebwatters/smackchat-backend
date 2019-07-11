@@ -6,7 +6,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
 
 
-    config.action_cable.url = "ws://smack-chat-heroku.herokuapp.com/cable"
+    config.action_cable.url = "wss://smack-chat-heroku.herokuapp.com/cable"
 
 
 
