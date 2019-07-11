@@ -12,7 +12,7 @@ class Api::V1::UserChannelsController < ApplicationController
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
         UserChannelSerializer.new(user_channel)
       ).serializable_hash
-      render json: { channel: ChannelSerializer.new(user_channel) }, status: :accepted
+      render json: { channel: UserChannelSerializer.new(user_channel) }, status: :accepted
     end
     end
 
