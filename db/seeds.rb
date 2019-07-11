@@ -2,6 +2,7 @@ User.destroy_all
 Channel.destroy_all
 Message.destroy_all
 UserChannel.destroy_all
+Reply.destroy_all
 
 
 10.times do 
@@ -23,7 +24,7 @@ end
         associations = UserChannel.create(user_id: user.id, channel_id: channel.id)
         content = Faker::Hipster.sentence
         message = Message.create(user_id: user.id, channel_id: channel.id, content: content )
-        Reply.create(user_id: User.all.sample.id, message_id: message.id, content: Faker::Hipster.sentence)
+        Reply.create(user_id: user.id, message_id: message.id, content: Faker::Hipster.sentence)
     end
 
 end
