@@ -19,8 +19,8 @@ class Api::V1::RepliesController < ApplicationController
     end
 
      def show 
-        message = Reply.find(params[:id]) 
-        render json: message
+         @message = Replay.find(params[:id]) 
+        render json: { reply: ReplySerializer.new(@message) }, status: :accepted
     end
 
         private 
