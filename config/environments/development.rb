@@ -6,7 +6,10 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
 
 
-    config.action_cable.url = "wss://smack-chat-heroku.herokuapp.com/cable"
+   config.action_cable.mount_path = '/cable'
+  config.action_cable.url = 'wss://smack-chat-heroku.herokuapp.com/cable'
+  
+  config.action_cable.allowed_request_origins = "http://localhost:3000"
 
 
 
