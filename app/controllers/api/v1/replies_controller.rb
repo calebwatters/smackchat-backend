@@ -1,8 +1,9 @@
 class Api::V1::RepliesController < ApplicationController
     skip_before_action :authorized
     def index 
-        messages = Reply.all 
-        render json: messages
+        replies = Reply.all 
+        # render json: { reply: ReplySerializer.new(replies) }, status: :accepted
+        render json: replies
     end
 
     def create 

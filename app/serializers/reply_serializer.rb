@@ -1,8 +1,14 @@
 class ReplySerializer < ActiveModel::Serializer
-    attributes :id, :content, :user_name
+    attributes :id, :content, :user_id, :message_id,  :user_name
+
+ 
     
     def user_name
-     object.user.username
+      if (object.user)
+        return object.user.username
+      else
+        return nil
+      end
     end
   end
   
