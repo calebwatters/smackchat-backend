@@ -13,7 +13,7 @@ class Api::V1::ChannelsController < ApplicationController
         ChannelSerializer.new(channel)
       ).serializable_hash
       ActionCable.server.broadcast 'channels_channel', serialized_data
-      head :ok
+      render json: { channel: ChannelSerializer.new(channel) }, status: :accepted
     end
   end
 
