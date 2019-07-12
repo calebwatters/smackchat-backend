@@ -23,7 +23,7 @@ end
         channel = Channel.all.sample
         associations = UserChannel.create(user_id: user.id, channel_id: channel.id)
         content = Faker::Hipster.sentence
-        message = Message.create(user_id: user.id, channel_id: channel.id, content: content )
+        message = Message.create(user_id: user.id, channel_id: channel.id, content: content, likes: 0)
         Reply.create(user_id: user.id, message_id: message.id, content: Faker::Hipster.sentence)
     end
 
