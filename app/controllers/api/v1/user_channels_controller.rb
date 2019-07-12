@@ -22,6 +22,11 @@ class Api::V1::UserChannelsController < ApplicationController
         
     end
 
+    def destroy
+        user_channel = UserChannel.find(params[:id])
+        user_channel.destroy
+    end
+
     private
 
     def user_channel_params

@@ -14,7 +14,7 @@ class Api::V1::RepliesController < ApplicationController
         ReplySerializer.new(reply)
       ).serializable_hash
     #   RepliesChannel.broadcast_to message, serialized_data
-      render json: { message: ReplySerializer.new(reply) }, status: :accepted
+      render json: { reply: ReplySerializer.new(reply) }, status: :accepted
     end
     end
 

@@ -5,8 +5,4 @@ class MessageSerializer < ActiveModel::Serializer
   def user_name
    object.user.username
   end
-
-  def replies
-    object.replies
-  end 
 end
