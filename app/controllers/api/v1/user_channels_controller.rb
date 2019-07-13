@@ -1,5 +1,5 @@
 class Api::V1::UserChannelsController < ApplicationController
-    # skip_before_action :authorized
+    skip_before_action :authorized
     def index 
         user_channels = UserChannel.all 
         render :json => user_channels, status: :accepted
